@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OmniPCX Firewall Port Calculator</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+<h2>OmniPCX Enterprise + SBC AudioCodes</h2>
+
+<div class="mb-3">
+<label class="form-label">Topología</label>
+<select id="topologia" class="form-control">
+<option value="omni-audiocodes">OmniPCX Enterprise + SBC AudioCodes</option>
+</select>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Tipo de señalización SIP</label>
+<select id="sip" class="form-control">
+<option value="5060">SIP UDP/TCP (5060)</option>
+<option value="5061">SIP TLS (5061)</option>
+</select>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Dispositivos a conectar</label><br>
+<input type="checkbox" id="ipdesktop"> IP Desktop Softphone ALE<br>
+<input type="checkbox" id="sipphones"> Teléfonos SIP<br>
+<input type="checkbox" id="softphones"> Softphones SIP Genéricos<br>
+<input type="checkbox" id="teams"> Microsoft Teams
+</div>
+
+<button onclick="generarMatriz()" class="btn btn-primary">Generar Matriz</button>
+
+<hr>
+<div id="resultado"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
