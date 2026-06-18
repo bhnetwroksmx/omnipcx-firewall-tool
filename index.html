@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixelink | Soluciones Digitales</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav>
+        <img src="logo.png" class="logo" alt="Pixelink">
+        <div>
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#mision">Misión</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Tecnología accesible, soluciones de calidad y crecimiento compartido.</h1>
+        <p>Desarrollo web, invitaciones digitales y soluciones CCTV para emprendedores, profesionistas y pequeñas empresas.</p>
+        <a class="btn" href="#contacto">Solicitar Cotización</a>
+    </section>
+</header>
+
+<section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="cards">
+
+        <div class="card">
+            <img src="diseño WEB.png" alt="Desarrollo Web">
+            <h3>Sitios Web para PYMES</h3>
+            <p>Páginas profesionales, rápidas y adaptadas a dispositivos móviles.</p>
+            <button class="btn-card" onclick="enviarWhatsApp('web')">Cotizar Web</button>
+        </div>
+
+        <div class="card">
+            <img src="invitaciones.png" alt="Invitaciones Digitales">
+            <h3>Invitaciones Digitales</h3>
+            <p>Diseños modernos y personalizados para todo tipo de eventos.</p>
+            <button class="btn-card" onclick="enviarWhatsApp('invitaciones')">Cotizar Invitación</button>
+        </div>
+
+        <div class="card">
+            <img src="img-cctv.png" alt="CCTV">
+            <h3>CCTV Profesional</h3>
+            <p>Instalación, configuración y mantenimiento de sistemas de videovigilancia.</p>
+            <button class="btn-card" onclick="enviarWhatsApp('cctv')">Cotizar CCTV</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="mision" class="info">
+    <h2>Nuestra Misión</h2>
+    <p>En Pixelink nuestra misión es impulsar el crecimiento de emprendedores, profesionistas y pequeñas empresas mediante soluciones tecnológicas accesibles, innovadoras y de alta calidad.</p>
+
+    <h2>Nuestra Visión</h2>
+    <p>Ser una empresa líder en soluciones tecnológicas para emprendedores y pequeñas empresas, reconocida por su cercanía, transparencia, calidad de servicio y compromiso con el crecimiento de nuestros clientes.</p>
+
+    <h2>Nuestros Valores</h2>
+    <ul>
+        <li>Compromiso con el Cliente</li>
+        <li>Precios Justos</li>
+        <li>Calidad</li>
+        <li>Transparencia</li>
+        <li>Innovación</li>
+        <li>Beneficio Mutuo</li>
+        <li>Responsabilidad</li>
+    </ul>
+</section>
+
+<section id="nosotros" class="about">
+    <h2>¿Por qué elegir Pixelink?</h2>
+    <p>Porque tu negocio merece destacar y crecer con el respaldo de la tecnología adecuada. En Pixelink transformamos las necesidades de nuestros clientes en soluciones digitales eficientes y accesibles, ayudándolos a fortalecer su presencia en internet, mejorar su imagen profesional y proteger sus activos más importantes.</p>
+
+    <p>Desarrollamos páginas web modernas y funcionales que impulsan tu marca, creamos invitaciones digitales innovadoras para hacer de cada evento una experiencia única, e implementamos soluciones de videovigilancia CCTV que brindan seguridad y tranquilidad para hogares y negocios.</p>
+
+    <p>Nos distinguimos por ofrecer precios justos, atención personalizada y servicios de alta calidad, permitiendo que emprendedores, profesionistas y pequeñas empresas accedan a tecnología confiable sin afectar su economía.</p>
+</section>
+
+<section id="contacto" class="contact">
+    <h2>Contáctanos</h2>
+    <p>Selecciona el servicio que requieres para recibir una cotización personalizada por WhatsApp:</p>
+    
+    <div class="selector-container">
+        <select id="select-servicio" onchange="actualizarEnlaceWhatsApp()">
+            <option value="general">Consulta General</option>
+            <option value="cctv">CCTV (Videovigilancia)</option>
+            <option value="invitaciones">Invitaciones Digitales</option>
+            <option value="web">Diseño y Desarrollo WEB</option>
+        </select>
+        <br><br>
+        <a id="btn-whatsapp" class="btn whatsapp-btn" href="#" target="_blank">Enviar WhatsApp</a>
+    </div>
+
+    <div class="datos-contacto">
+        <p>Email: contacto@pixelink.com</p>
+        <p>WhatsApp directo: +52 984 111 7493</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Pixelink | Tecnología accesible, soluciones de calidad y crecimiento compartido.
+</footer>
+
+<script>
+    const TELEFONO_WHATSAPP = "529841117493"; 
+
+    const MENSAJES = {
+        general: "Hola, me gustaría recibir información sobre los servicios que ofrecen en Pixelink.",
+        cctv: "Hola, requiero una cotización para un sistema de videovigilancia CCTV.",
+        invitaciones: "Hola, me interesa solicitar una cotización para el diseño de invitaciones digitales.",
+        web: "Hola, requiero una cotización para el servicio de desarrollo de páginas WEB y aplicaciones."
+    };
+
+    function actualizarEnlaceWhatsApp() {
+        const servicioSeleccionado = document.getElementById("select-servicio").value;
+        const textoMensaje = encodeURIComponent(MENSAJES[servicioSeleccionado] || MENSAJES.general);
+        const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${textoMensaje}`;
+        document.getElementById("btn-whatsapp").href = url;
+    }
+
+    function enviarWhatsApp(servicio) {
+        const textoMensaje = encodeURIComponent(MENSAJES[servicio] || MENSAJES.general);
+        const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${textoMensaje}`;
+        window.open(url, '_blank');
+    }
+
+    window.onload = actualizarEnlaceWhatsApp;
+</script>
+</body>
+</html>
